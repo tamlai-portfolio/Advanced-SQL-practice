@@ -4,8 +4,8 @@
 This is a mini projects to practice writing advanced SQL queries for some popular good questions I collected through various source. 
 With the help of ChatGPT, I have created dummy database for the practice.
 
-- All the dummy database I created: [create.sql]()
-- SQL answers to all the questions below: [advancedSQL.sql]()
+- All the dummy database I created: [create database.sql](https://github.com/tamlai-portfolio/Advanced-SQL-practice/blob/main/create%20database.sql)
+- SQL answers to all the questions below: [advancedSQL.sql](https://github.com/tamlai-portfolio/Advanced-SQL-practice/blob/main/advancedSQL.sql)
 
 ## Questions
 
