@@ -1,8 +1,7 @@
---1--
+--1-- Write a SQL query to fetch the authors who don't have any books associated with them.
 SELECT authorname FROM authors a LEFT JOIN books b ON a.authorid = b.authorid WHERE bookid IS NULL;
 
---2--
--- identify which customer have missed more than 4 sessions in a row
+--2-- identify which customer have missed more than 4 sessions in a row
 WITH SessionOrder AS (
     SELECT *, ROW_NUMBER () OVER (PARTITION BY userid ORDER BY sessiondate) AS row_num
     FROM WorkoutSessions
@@ -26,8 +25,7 @@ GROUP BY userid
 HAVING COUNT(*) >=4
 ORDER BY userid;
 
---3--
---highest sales number each quarter: create a quarter column, ranking the total customer for each salesperson by quarter
+--3-- highest sales number each quarter: create a quarter column, ranking the total customer for each salesperson by quarter
 
 WITH Quarter AS(
     SELECT *, 
@@ -43,7 +41,6 @@ SELECT salespersonid, quarter, rank FROM Ranking WHERE rank = 1 ORDER BY salespe
 
 
 --4-- Find top 5 website has highest increase in visit M-o-M
--- Though process: 
 WITH total_visits AS(
     SELECT pageid, DATE_TRUNC('month',visitdate) AS month, SUM(visits) AS visits
     FROM websitetraffic GROUP BY pageid, month ORDER BY pageid, month DESC
@@ -60,12 +57,12 @@ SELECT pageid, month, visits, growth, rank FROM ranking
 WHERE rank <=5 AND growth IS NOT NULL ORDER BY month DESC, rank ASC;
 
 
---5--which customer have overdue rental but not yet return
+--5-- which customer have overdue rental but not yet return
 SELECT rentalid, customerid, rentaldate, duedate FROM rentals
 WHERE returndate IS NULL AND duedate < CURRENT_DATE;
 
 
---6--exam with highest failure rate (register but not passed)
+--6-- exam with highest failure rate (register but not passed)
 SELECT examid, COUNT(studentid) FROM onlineexams WHERE completiondate IS NULL 
 GROUP BY examid ORDER BY COUNT(studentid) DESC LIMIT 1;
 
